@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/android/tmp/arm-eabi-4.9/x86_64-linux-gnu/arm-eabi/lib'
+libdir='/home/fusionjack/tmp/arm-eabi-4.9/x86_64-linux-gnu/arm-eabi/lib'
