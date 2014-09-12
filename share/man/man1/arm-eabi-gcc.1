@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2014-08-31" "gcc-4.9.2" "GNU"
+.TH GCC 1 "2014-09-10" "gcc-4.9.2" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -847,7 +847,7 @@ in the following sections.
 .Sp
 \&\fI\s-1MSP430\s0 Options\fR
 \&\fB\-msim \-masm\-hex \-mmcu= \-mcpu= \-mlarge \-msmall \-mrelax 
-\&\-mhwmult=\fR
+\&\-mhwmult= \-minrt\fR
 .Sp
 \&\fI\s-1NDS32\s0 Options\fR
 \&\fB\-mbig\-endian \-mlittle\-endian 
@@ -11391,8 +11391,8 @@ architecture together with the optional \s-1CRC32\s0 extensions.
 .Sp
 \&\fB\-march=native\fR causes the compiler to auto-detect the architecture
 of the build computer.  At present, this feature is only supported on
-Linux, and not all architectures are recognized.  If the auto-detect is
-unsuccessful the option has no effect.
+GNU/Linux, and not all architectures are recognized.  If the auto-detect
+is unsuccessful the option has no effect.
 .IP "\fB\-mtune=\fR\fIname\fR" 4
 .IX Item "-mtune=name"
 This option specifies the name of the target \s-1ARM\s0 processor for
@@ -11442,7 +11442,7 @@ this option may change in future \s-1GCC\s0 versions as \s-1CPU\s0 models come a
 .Sp
 \&\fB\-mtune=native\fR causes the compiler to auto-detect the \s-1CPU\s0
 of the build computer.  At present, this feature is only supported on
-Linux, and not all architectures are recognized.  If the auto-detect is
+GNU/Linux, and not all architectures are recognized.  If the auto-detect is
 unsuccessful the option has no effect.
 .IP "\fB\-mcpu=\fR\fIname\fR" 4
 .IX Item "-mcpu=name"
@@ -11462,8 +11462,8 @@ See \fB\-mtune\fR for more information.
 .Sp
 \&\fB\-mcpu=native\fR causes the compiler to auto-detect the \s-1CPU\s0
 of the build computer.  At present, this feature is only supported on
-Linux, and not all architectures are recognized.  If the auto-detect is
-unsuccessful the option has no effect.
+GNU/Linux, and not all architectures are recognized.  If the auto-detect
+is unsuccessful the option has no effect.
 .IP "\fB\-mfpu=\fR\fIname\fR" 4
 .IX Item "-mfpu=name"
 This specifies what floating-point hardware (or hardware emulation) is
@@ -17225,6 +17225,12 @@ inline.  This makes for bigger, but faster code.
 The hardware multiply routines disable interrupts whilst running and
 restore the previous interrupt state when they finish.  This makes
 them safe to use inside interrupt handlers as well as in normal code.
+.IP "\fB\-minrt\fR" 4
+.IX Item "-minrt"
+Enable the use of a minimum runtime environment \- no static
+initializers or constructors.  This is intended for memory-constrained
+devices.  The compiler will include special symbols in some objects
+that tell the linker and runtime which code fragments are required.
 .PP
 \fI\s-1NDS32\s0 Options\fR
 .IX Subsection "NDS32 Options"
